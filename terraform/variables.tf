@@ -8,7 +8,7 @@ variable "folder_id" {
   description = "Yandex Folder ID"
 }
 
-variable "tg_bot_token" {
+variable "tg_bot_key" {
   type        = string
   description = "Telegram Bot API Token"
   sensitive   = true
