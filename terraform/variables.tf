@@ -19,8 +19,3 @@ variable "yandex_oauth_token" {
   description = "Yandex OAuth Token"
   sensitive   = true
 }
-
-variable "service_account_id" {
-  type        = string
-  description = "Service Account ID"
-}

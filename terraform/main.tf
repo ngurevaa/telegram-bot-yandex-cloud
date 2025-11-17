@@ -15,7 +15,7 @@ provider "yandex" {
 }
 
 data "yandex_iam_service_account" "bot_sa" {
-  service_account_id = var.service_account_id
+  name = "telegram-bot-gureva-sa"
 }
 
 resource "yandex_storage_bucket" "instructions" {
@@ -53,6 +53,12 @@ resource "yandex_function" "bot" {
   content {
     zip_filename = "../src/bot.zip"
   }
+}
+
+resource "yandex_function_iam_binding" "public_access" {
+  function_id = yandex_function.bot.id
+  role        = "functions.functionInvoker"
+  members     = ["system:allUsers"]
 }
 
 resource "yandex_api_gateway" "gateway" {
